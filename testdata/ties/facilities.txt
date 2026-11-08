@@ -1,0 +1,4 @@
+F001|Lab One|Alpha Hall|Lab
+F002|Lab Two|Beta Hall|LAB
+F003|Lab Three|Gamma Hall|lab
+F004|Quiet Room|Delta Hall|Study

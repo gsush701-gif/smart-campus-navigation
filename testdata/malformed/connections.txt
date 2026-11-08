@@ -1,0 +1,10 @@
+# Accepted, then every kind of rejection
+Library|Student Union
+Student Union|Library
+LIBRARY|student union
+Library|Library
+Library|Atlantis
+Library
+Library|Gym|Extra
+|Gym
+Student Union|Gym

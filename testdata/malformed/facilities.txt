@@ -1,0 +1,10 @@
+F001|Reading Room|library|Library
+f001|Other Room|Library|zeta
+F01|Short ID|Library|Lab
+G001|Wrong Letter|Library|Lab
+F0012|Long ID|Library|Lab
+F002|Lab|Atlantis|Lab
+F003||Library|Lab
+F004|Three Fields|Library
+F005|Lab One|Gym|ZETA
+F006|Lab Two|Gym|Zeta

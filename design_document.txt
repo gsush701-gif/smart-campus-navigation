@@ -1,0 +1,81 @@
+Design Document: Smart Campus Navigation and Facility Analytics System
+
+HASH FUNCTION
+The key is trimmed and uppercased first, so F004 and f004 hash identically.
+Starting from h = 0, each character c is applied in order:
+    h = (h * 31 + c) mod capacity
+Every character affects the result, and taking the remainder at each step
+keeps the value small, so it cannot overflow. std::hash is not used.
+
+COLLISION STRATEGY
+Separate chaining. Each bucket is a vector of entries that grows as needed.
+We chose it because it imposes no limit on the number of facilities, needs no
+probing or deleted-slot logic, and keeps the insert and lookup code short.
+
+COUNTING COLLISIONS
+One collision is counted for each accepted insertion into a nonempty bucket.
+Duplicates are checked first, so a rejected ID never adds to the count. In
+testdata/collision, F001/F039 and F010/F048 share buckets: the program reports
+2 collisions, with or without the duplicate f039 record.
+
+CAPACITY AND FULL-TABLE BEHAVIOR
+The capacity is 101, set by HashTable::DEFAULT_CAPACITY. It is prime, and 31 is
+not a multiple of it, so the multiplier does not cancel out earlier characters.
+The table has no full state because chains grow, so no record is ever rejected
+for lack of space, and resizing is not needed. The ID format allows at most
+1000 distinct IDs, about 10 per bucket on average at that extreme.
+
+FACILITY STORAGE
+FacilityDatabase keeps accepted records in a vector, in file order. The hash
+table maps each ID to its position in that vector, so each record is stored
+once. ID lookup searches only one chain. Name and category searches scan the
+vector, as the specification allows.
+
+GRAPH REPRESENTATION
+CampusGraph uses an adjacency list: a vector of building names and, for each
+building, a vector of neighbor indexes. We chose this because campus graphs are
+sparse, and because the list naturally keeps neighbor insertion order, which
+determines BFS order. An edge is stored at both endpoints and counted once in
+connectionCount_, so degree is the neighbor list's size. Checking one endpoint
+for an existing edge also catches reversed duplicates.
+
+BFS AND SHORTEST PATH
+One private bfs function serves every feature. It uses std::queue and marks a
+building visited when it is added to the queue. It records distance and parent
+for each building. Reachability prints the visit order and distances. Shortest
+path follows parents back from the destination and reverses the route. A
+building keeps the first parent that discovers it, and neighbors are visited in
+insertion order, so ties follow neighbor order. Library to Gym therefore goes
+through Student Union.
+
+DEPARTMENT TREE
+DepartmentNode holds a name, a parent pointer and a vector of child pointers,
+so a node can have any number of children. DepartmentTree owns the nodes and
+its destructor frees them children-first; copying is disabled to prevent a
+double free. Preorder and postorder are recursive, and level-order uses a
+queue. Siblings are visited in insertion order. One recursive pass computes
+the total, leaf count and height. Depth is found by following parent pointers.
+
+REPORTS
+FacilityDatabase keeps one count per distinct category, updated only when a
+record is accepted, so a rejected record's spelling is never recorded. Stored
+facilities use the first accepted category spelling, in the same way that they
+use the spelling from buildings.txt. An empty database returns before any
+division. The connectivity report finds the highest degree, lists every
+building with that degree, lists isolated buildings, and counts components by
+starting BFS from each building not yet visited, sharing one visited list.
+
+FILE LOADING
+DataLoader has one reader that handles getline, comments, blank lines, trimming
+and warnings. A small handler class for each file validates fields in this
+order: field count, empty fields, ID format, unknown reference, duplicate.
+
+MENU AND INPUT
+main.cpp reads every entry with getline and checks the whole line, so bad input
+cannot leave the stream in a failed state. End of input exits cleanly, which
+keeps scripted runs from looping forever. The default build uses the Milestone
+1 menu; compiling with -DFINAL_MENU selects the Final menu.
+
+MAIN MODULES
+StringUtils, HashTable, Facility (Facility, FacilityDatabase), CampusGraph,
+DepartmentTree (DepartmentNode, DepartmentTree), DataLoader, main.

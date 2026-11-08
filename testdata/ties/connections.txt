@@ -1,0 +1,5 @@
+Alpha Hall|Gamma Hall
+Alpha Hall|Beta Hall
+Beta Hall|Delta Hall
+Gamma Hall|Delta Hall
+Epsilon Hall|Zeta Hall

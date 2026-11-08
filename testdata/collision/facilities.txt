@@ -1,0 +1,7 @@
+# F001 and F039 collide; F010 and F048 collide. f039 is a duplicate key.
+F001|First In Chain|Library|Test
+F039|Second In Chain|Gym|Test
+F010|Third Record|Library|Test
+F048|Fourth Record|Gym|Test
+F002|No Collision|Library|Test
+f039|Duplicate Attempt|Library|Test

@@ -1,0 +1,6 @@
+# Keep LF in the repository and on checkout, so run_tests.sh works on CELL.
+* text=auto eol=lf
+
+# Input files must stay byte-for-byte as they are, including the CRLF test data.
+data/** -text
+testdata/crlf/** -text

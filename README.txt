@@ -34,7 +34,8 @@ DIRECTORY LAYOUT
     data/                The four starter input files
     testdata/            Test data directories and run_tests.sh
     README.txt           This file
-    CONTRIBUTIONS.txt    Team members, module ownership, reflections
+    README.md            Short project description shown on GitHub
+    CONTRIBUTIONS.txt    Team members, module ownership, shared work
     design_document.txt  Design decisions
     test_results.txt     Recorded test results
     Makefile             Optional build commands

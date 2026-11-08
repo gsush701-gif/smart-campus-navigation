@@ -1,0 +1,8 @@
+# Comment line
+
+Library
+   Student Union   
+library
+Science Building|Extra
+Gym
+Observatory

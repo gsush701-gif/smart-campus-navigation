@@ -1,0 +1,10 @@
+College|University
+University|NONE
+Science|University
+SCIENCE|University
+Orphan|Nowhere
+Later|NONE
+Math|
+|University
+A|B|C
+Physics|Science

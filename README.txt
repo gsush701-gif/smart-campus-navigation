@@ -6,6 +6,12 @@ A C++ menu program that loads campus data from text files and lets a user
 locate facilities, explore building connections, find routes, browse the
 department hierarchy, and view summary reports.
 
+GITHUB REPOSITORY
+    https://github.com/gsush701-gif/smart-campus-navigation
+
+TEAM
+    Sushil Gautam, Anish Dahal, Vijay Ram Sanvi Bhaskarla
+
 BUILD (run from the project root)
 Milestone 1 menu (default):
     g++ -std=c++11 -Wall -Wextra -pedantic -Iinclude src/*.cpp -o campus

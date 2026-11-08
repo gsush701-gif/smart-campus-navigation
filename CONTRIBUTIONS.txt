@@ -1,0 +1,42 @@
+Project Contributions
+TO COMPLETE: replace every [bracketed] item before submitting, and update this
+file if the work ends up divided differently.
+
+MEMBERS AND MODULES
+Sushil Gautam, GitHub: gsush701-gif
+  Modules: Facility, HashTable, ID search, name and category search,
+           category report
+  Files:   include/Facility.h, src/Facility.cpp, include/HashTable.h,
+           src/HashTable.cpp
+
+Anish Dahal, GitHub: Anish2061
+  Modules: CampusGraph, BFS reachability, shortest path, connectivity report
+  Files:   include/CampusGraph.h, src/CampusGraph.cpp
+
+Vijay Ram Sanvi Bhaskarla, GitHub: [username]
+  Modules: DepartmentTree, traversals, department statistics
+  Files:   include/DepartmentTree.h, src/DepartmentTree.cpp
+
+SHARED WORK
+Everyone is responsible for the shared work. Each item has one lead.
+  Sushil Gautam:             StringUtils, README.txt, collision test data
+  Anish Dahal:               DataLoader, design_document.txt, file-validation
+                             test data (malformed, crlf, empty, missing)
+  Vijay Ram Sanvi Bhaskarla: main.cpp menu, testdata/run_tests.sh,
+                             test_results.txt, tree and graph test data
+                             (rootonly, ties)
+Each member writes the design_document.txt section for their own module and
+tests their own module on CELL.
+
+INDIVIDUAL REFLECTIONS (Final; 3 to 5 sentences each, written by the member)
+Each covers what they built, what they reviewed, and one bug they found and fixed.
+
+Sushil Gautam: [reflection]
+
+Anish Dahal: [reflection]
+
+Vijay Ram Sanvi Bhaskarla: [reflection]
+
+CODE REVIEW (Final)
+[Link a pull request review, or record who reviewed which module, the date, what
+was found, and what changed.]
